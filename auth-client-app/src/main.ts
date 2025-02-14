@@ -3,11 +3,6 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { appMsalInstance } from './app/auth-config';
 
-// bootstrapApplication(AppComponent, appConfig)
-//   .catch((err) => console.error(err));
-
-
-
 
 appMsalInstance
   .initialize()

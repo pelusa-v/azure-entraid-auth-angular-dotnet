@@ -16,13 +16,15 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
+// Add microsoft entra ID authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration, "AzureAd");
 
+// Add microsoft entra ID authorization (policy based authorization)
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("ItemsRead", policy =>

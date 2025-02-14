@@ -1,4 +1,4 @@
-﻿namespace auth_api_app;
+﻿namespace auth_api_app.Entities;
 
 public class Item
 {

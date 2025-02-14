@@ -20,6 +20,3 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes)]
 };
-
-// Initialize MSAL instance before using it
-// appMsalInstance.initialize().catch(console.error);

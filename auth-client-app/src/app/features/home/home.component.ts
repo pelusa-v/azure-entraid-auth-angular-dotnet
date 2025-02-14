@@ -32,6 +32,5 @@ export class HomeComponent {
     this.msal.logout();
     this.signedInAccount.set(null);
     this.msal.instance.setActiveAccount(null);
-    // this.isLoginInProgress = false;
   }
 }

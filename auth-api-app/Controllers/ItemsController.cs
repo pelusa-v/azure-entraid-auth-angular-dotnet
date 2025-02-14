@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using auth_api_app.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace auth_api_app;
+namespace auth_api_ap.Controllers;
 
 [ApiController]
 [Route("[controller]")]

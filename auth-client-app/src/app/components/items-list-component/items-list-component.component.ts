@@ -16,7 +16,7 @@ import { Item } from './items.model';
 export class ItemsListComponentComponent {
   private msal = inject(MsalService);
   private httpClient = inject(HttpClient);
-  private itemsUrl = 'http://localhost:5174/items';
+  private itemsUrl = 'http://localhost:5174/items';  // local protected backend API URL
 
   items = signal<Item[]>([]);
   
@@ -31,22 +31,11 @@ export class ItemsListComponentComponent {
 
   async getItems() {
     const httpRes: AuthenticationResult = await this.msal.instance.acquireTokenSilent(loginRequestItemsData);
-      console.log(httpRes.accessToken);
-      const itemsData = await firstValueFrom(this.httpClient.get<Item[]>(this.itemsUrl, {
-        headers: { Authorization: `Bearer ${httpRes.accessToken}` }
-      }));
+    console.log(httpRes.accessToken);
+    const itemsData = await firstValueFrom(this.httpClient.get<Item[]>(this.itemsUrl, {
+      headers: { Authorization: `Bearer ${httpRes.accessToken}` }
+    }));
 
-      this.items.set(itemsData || []);
-    // try {
-    //   const httpRes: AuthenticationResult = await this.msal.instance.acquireTokenSilent(loginRequestItemsData);
-    //   console.log(httpRes.accessToken);
-    //   const itemsData = await firstValueFrom(this.httpClient.get<Item[]>(this.itemsUrl, {
-    //     headers: { Authorization: `Bearer ${httpRes.accessToken}` }
-    //   }));
-
-    //   this.items.set(itemsData || []);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    this.items.set(itemsData || []);
   }
 }
